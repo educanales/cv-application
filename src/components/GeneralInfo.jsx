@@ -62,6 +62,5 @@ function InfoInput({ id, type, value, onChange }) {
       value={value} 
       onChange={onChange} 
     />
-  )
-    
+  )    
 }
