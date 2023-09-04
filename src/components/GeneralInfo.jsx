@@ -1,7 +1,14 @@
 import { useState } from "react";
 
 export default function GeneralInfo() {
-  const [info, setInfo] = useState({ firstName: 'First Name', lastName: 'Last Name', email: 'tuemail@mail.com', phone: '+56912345678', show: true });
+  const [info, setInfo] = useState([
+    { firstName: 'First Name', 
+      lastName: 'Last Name', 
+      email: 'tuemail@mail.com', 
+      phone: '+56912345678', 
+      show: true 
+    }
+  ]);
 
   function handleClick() {
     setInfo({ ...info,  show: false });

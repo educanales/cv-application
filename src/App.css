@@ -5,3 +5,11 @@
   text-align: left;
   font-family: sans-serif;
 }
+
+input {
+  border: none;
+}
+
+textarea {
+  border-radius: 10px;
+}
