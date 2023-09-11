@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Form from './components/Form';
-import GeneralInfo from './components/GeneralInfo';
 import About from './components/About';
-import Experience from './components/Experience';
 import Education from './components/Education';
 import GenInfo from './components/GenInfo';
 import ExpInfo from './components/ExpInfo';

@@ -1,0 +1,81 @@
+import { useState } from "react";
+import { Fragment } from "react";
+
+export default function ExperienceList({ exp, onChangeExp }) {
+    
+  return (
+    <>
+      {exp.map(item => (
+        <Fragment key={item.id}>
+          <ExperienceData 
+            item={item}
+            onChange={onChangeExp}
+          />
+        </Fragment>
+      ))}
+    </>
+  )
+}
+
+function ExperienceData({ item, onChange }) {
+  const [shownList, setShownList] = useState(true);
+  let experienceContent;
+  if (shownList) {
+    experienceContent = (
+      <form>
+        <input 
+          type="text"
+          name="position"
+          placeholder="Position"
+          value={item.position}
+          onChange={e => {
+            onChange({ ...item, position: e.target.value })
+          }}
+        />
+        <input 
+          type="text"
+          name="company"
+          placeholder="Company"
+          value={item.company}
+          onChange={e => {
+            onChange({ ...item, company: e.target.value })
+          }}
+        />
+        <input 
+          type="date"
+          name="sinceDate"
+          value={item.sinceDate}
+          onChange={e => {
+            onChange({ ...item, sinceDate: e.target.value })
+          }}
+        />
+        <input 
+          type="date"
+          name="untilDate"
+          value={item.untilDate}
+          onChange={e => {
+            onChange({ ...item, untilDate: e.target.value })
+          }}
+        />
+        <button onClick={() => setShownList(false)}>Save</button>
+      </form>
+    )
+  } else {
+    experienceContent = (
+      <>
+        <h3>{item.position}</h3>
+        <h4>{item.company}</h4>
+        <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
+        <button onClick={() => setShownList(true)}>Edit</button>
+        <button>Delete</button>
+      </>
+    )
+  }
+
+  return (
+    <>
+      {experienceContent}
+    </>
+  )
+
+}
