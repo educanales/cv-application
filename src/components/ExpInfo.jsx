@@ -1,75 +1,95 @@
 import { useState } from "react";
 import { Fragment } from "react";
+import AddExperience from "./AddExperience";
 
 export default function ExpInfo() {
-  const [exp, setExp] = useState([]);
-  const [position, setPosition] = useState('');
-  const [company, setCompany] = useState('');
-  const [sinceDate, setSinceDate] = useState('');
-  const [untilDate, setUntilDate] = useState('');
+  const [exp, setExp] = useState([
+    {
+      id: 1,
+      position: 'Position',
+      company: 'Company',
+      sinceDate: '01-01-2023',
+      untilDate: '01-09-2023',
+    }
+  ]);
+  const [shownList, setShownList] = useState(true);
 
-  function handleClick(e) {
-    e.preventDefault();
-    setExp([ ...exp, 
-      { id: crypto.randomUUID(), position: position, company: company, sinceDate: sinceDate, untilDate: untilDate, show: true }
-    ])    
+  const handleEdit = () => {
+    setShownList(false)
   }
 
-  function handleEdit() {
-    setExp({ ...exp, show: false });
+  const handleSubmit = () => {
+    setShownList(true)
   }
 
-  
+  const handleChange = (experienceItem) => {    
+    setExp(exp.map(item => {
+      if(item.id === experienceItem.id) {
+        return experienceItem;
+      } else {
+        return item;
+      }
+    }));
+  }
+
+  const handleAddExperience = (position, company, sinceDate, untilDate) => {
+    setExp([
+      ...exp,
+      {
+        id: crypto.randomUUID(),
+        position: position,
+        company: company,
+        sinceDate: sinceDate,
+        untilDate: untilDate
+      }
+    ])
+  }
+
   const experienceList = exp.map(item => (
     <Fragment key={item.id}>
       <h3>{item.position}</h3>
       <h4>{item.company}</h4>
       <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
-      {/* <p>{item.id}</p> */}
-      <button>Edit</button>
+      <button onClick={handleEdit}>Edit</button>
+      <button>Delete</button>
     </Fragment>
   ))
 
+  const inputList = (
+    <form onSubmit={handleSubmit}>
+      <input 
+        type="text"
+        name="position"
+        placeholder="Position"
+        // value={exp.position}
+        onChange={handleChange}
+      />
+      <input 
+        type="text"
+        name="company"
+        placeholder="Company"
+        // value={exp.company}
+        onChange={handleChange}
+      />
+      <input 
+        type="date"
+        name="sinceDate"
+        onChange={handleChange}
+      />
+      <input 
+        type="date"
+        name="untilDate"
+        onChange={handleChange}
+      />
+      <button type="submit">Save</button>
+    </form>
+  )
+  
   return (
     <>
-      <div>
-        {experienceList}
-      </div>
-      <input
-        type="text"
-        value={position}
-        placeholder="Position"
-        onChange={e => setPosition(e.target.value)}
-      />
-      <input 
-        type="text"
-        value={company}
-        placeholder="Company"
-        onChange={e => setCompany(e.target.value)}
-      />
-      <input 
-        type="date"
-        value={sinceDate}        
-        onChange={e => setSinceDate(e.target.value)}
-      />
-      <input 
-        type="date"
-        value={untilDate}        
-        onChange={e => setUntilDate(e.target.value)}
-      />
-      <button
-        type="submit"
-        onClick={handleClick}
-      >Save
-      </button>
-          
-    
+      {shownList ? experienceList : inputList}
+      <br />
+      <AddExperience onAddExperience={handleAddExperience} />
     </>
   )
 }
-
-const lista = [
-  {
-    id: 1, position: 'Developer', company: 'Freelance', sinceDate: "2023-01-17", untilDate: "Actual"
-  }
-]
