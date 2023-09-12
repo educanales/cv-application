@@ -13,16 +13,6 @@ export default function ExpInfo() {
     }
   ]);
 
-  const handleChange = (experienceItem) => {    
-    setExp(exp.map(item => {
-      if(item.id === experienceItem.id) {
-        return experienceItem;
-      } else {
-        return item;
-      }
-    }));
-  }
-
   const handleAddExperience = (position, company, sinceDate, untilDate) => {
     setExp([
       ...exp,
@@ -35,12 +25,27 @@ export default function ExpInfo() {
       }
     ])
   }
+
+  const handleChange = (experienceItem) => {    
+    setExp(exp.map(item => {
+      if(item.id === experienceItem.id) {
+        return experienceItem;
+      } else {
+        return item;
+      }
+    }));
+  }
+
+  const handleDelete = (expId) => {
+    setExp(exp.filter(item => item.id !== expId));
+  }
   
   return (
     <>
       <ExperienceList 
         exp={exp}
         onChangeExp={handleChange}
+        onDeleteExp={handleDelete}
       />
       <br />
       <AddExperience onAddExperience={handleAddExperience} />

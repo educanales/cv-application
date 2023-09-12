@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Fragment } from "react";
 
-export default function ExperienceList({ exp, onChangeExp }) {
+export default function ExperienceList({ exp, onChangeExp, onDeleteExp }) {
     
   return (
     <>
@@ -10,6 +10,7 @@ export default function ExperienceList({ exp, onChangeExp }) {
           <ExperienceData 
             item={item}
             onChange={onChangeExp}
+            onDelete={onDeleteExp}
           />
         </Fragment>
       ))}
@@ -17,10 +18,10 @@ export default function ExperienceList({ exp, onChangeExp }) {
   )
 }
 
-function ExperienceData({ item, onChange }) {
+function ExperienceData({ item, onChange, onDelete }) {
   const [shownList, setShownList] = useState(true);
   let experienceContent;
-  if (shownList) {
+  if (!shownList) {
     experienceContent = (
       <form>
         <input 
@@ -32,7 +33,7 @@ function ExperienceData({ item, onChange }) {
             onChange({ ...item, position: e.target.value })
           }}
         />
-        <input 
+        <input
           type="text"
           name="company"
           placeholder="Company"
@@ -57,7 +58,7 @@ function ExperienceData({ item, onChange }) {
             onChange({ ...item, untilDate: e.target.value })
           }}
         />
-        <button onClick={() => setShownList(false)}>Save</button>
+        <button onClick={() => setShownList(true)}>Save</button>
       </form>
     )
   } else {
@@ -66,8 +67,8 @@ function ExperienceData({ item, onChange }) {
         <h3>{item.position}</h3>
         <h4>{item.company}</h4>
         <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
-        <button onClick={() => setShownList(true)}>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => setShownList(false)}>Edit</button>
+        <button onClick={() => onDelete(item.id)}>Delete</button>
       </>
     )
   }
