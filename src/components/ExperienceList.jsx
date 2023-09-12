@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Fragment } from "react";
 
 export default function ExperienceList({ exp, onChangeExp, onDeleteExp }) {
-    
   return (
     <>
       {exp.map(item => (
