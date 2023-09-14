@@ -2,14 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import About from './components/About';
 import Education from './components/Education';
-import GenInfo from './components/GenInfo';
 import ExpInfo from './components/ExpInfo';
+import GeneralInfo from './components/GeneralInfo';
 
 export default function App() {
 
   return (
     <>
-      <GenInfo />
+      <GeneralInfo />
       <hr />
       <About />
       <hr />
