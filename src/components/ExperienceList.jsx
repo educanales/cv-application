@@ -41,6 +41,14 @@ function ExperienceData({ item, onChange, onDelete }) {
             onChange({ ...item, company: e.target.value })
           }}
         />
+        <textarea 
+          name="responsibilities"       
+          placeholder="Tell us what you do"
+          value={item.responsibilities}
+          onChange={e => {
+            onChange({ ...item, responsibilities: e.target.value })
+          }}
+        />
         <input 
           type="text"
           name="sinceDate"
@@ -67,6 +75,7 @@ function ExperienceData({ item, onChange, onDelete }) {
       <>
         <h3>{item.position}</h3>
         <h4>{item.company}</h4>
+        <p>{item.responsibilities}</p>
         <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
         <button onClick={() => setShownList(false)}>Edit</button>
         <button onClick={() => onDelete(item.id)}>Delete</button>

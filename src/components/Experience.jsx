@@ -8,18 +8,20 @@ export default function Experience() {
       id: 1,
       position: 'Position',
       company: 'Company',
+      responsibilities: 'What do you do',
       sinceDate: '01-01-2023',
       untilDate: '01-09-2023',
     }
   ]);
 
-  const handleAddExperience = (position, company, sinceDate, untilDate) => {
+  const handleAddExperience = (position, company, responsibilities, sinceDate, untilDate) => {
     setExp([
       ...exp,
       {
         id: crypto.randomUUID(),
         position: position,
         company: company,
+        responsibilities: responsibilities,
         sinceDate: sinceDate,
         untilDate: untilDate
       }
