@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddExperience from "./AddExperience";
 import ExperienceList from "./ExperienceList";
 
-export default function ExpInfo() {
+export default function Experience() {
   const [exp, setExp] = useState([
     {
       id: 1,
@@ -42,6 +42,7 @@ export default function ExpInfo() {
   
   return (
     <>
+      <h2>Experience</h2>
       <ExperienceList 
         exp={exp}
         onChangeExp={handleChange}

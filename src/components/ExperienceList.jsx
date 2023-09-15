@@ -42,16 +42,18 @@ function ExperienceData({ item, onChange, onDelete }) {
           }}
         />
         <input 
-          type="date"
+          type="text"
           name="sinceDate"
+          placeholder="Since Date"
           value={item.sinceDate}
           onChange={e => {
             onChange({ ...item, sinceDate: e.target.value })
           }}
         />
         <input 
-          type="date"
+          type="text"
           name="untilDate"
+          placeholder="Until Date"
           value={item.untilDate}
           onChange={e => {
             onChange({ ...item, untilDate: e.target.value })

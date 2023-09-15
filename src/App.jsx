@@ -1,8 +1,8 @@
-import { useState } from 'react'
+// import 
 import './App.css'
 import About from './components/About';
 import Education from './components/Education';
-import ExpInfo from './components/ExpInfo';
+import Experience from './components/Experience';
 import GeneralInfo from './components/GeneralInfo';
 
 export default function App() {
@@ -12,11 +12,9 @@ export default function App() {
       <GeneralInfo />
       <hr />
       <About />
-      <hr />
-      <h2>Experience</h2>
-      <ExpInfo />
-      <hr />
-      <h2>Education</h2>
+      <hr />      
+      <Experience />
+      <hr />      
       <Education />
     </>
   )
