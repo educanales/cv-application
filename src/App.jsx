@@ -1,5 +1,5 @@
 // import 
-import './App.css'
+import './styles/App.css'
 import About from './components/About';
 import Education from './components/Education';
 import Experience from './components/Experience';

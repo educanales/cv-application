@@ -1,0 +1,9 @@
+#name {
+  font-size: 2rem;
+}
+
+.genInfoContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

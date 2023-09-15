@@ -31,13 +31,15 @@ export default function AddEducation({ onAddEducation }) {
           />
           <input 
             name="sinceDate"
-            type="date" 
+            placeholder="Since Date"
+            type="text" 
             value={sinceDate} 
             onChange={(e) => setSinceDate(e.target.value)} 
           />
           <input 
             name="untilDate"
-            type="date" 
+            placeholder="Until Date"
+            type="text"
             value={untilDate} 
             onChange={(e) => setUntilDate(e.target.value)} 
           />

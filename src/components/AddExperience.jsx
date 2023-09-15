@@ -38,12 +38,14 @@ export default function AddExperience({ onAddExperience }) {
             />
             <input 
               name="sinceDate"
+              placeholder="Since Date"
               type="text" 
               value={sinceDate} 
               onChange={e => setSinceDate(e.target.value)} 
             />
             <input 
               name="untilDate"
+              placeholder="Until Date"
               type="text" 
               value={untilDate} 
               onChange={e => setUntilDate(e.target.value)} 

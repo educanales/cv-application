@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Fragment } from "react";
+import '../styles/GeneralInfo.css'
 
 export default function GeneralInfo() {
   const [info, setInfo] = useState([
     { 
       id: 1,
-      firstName: 'First Name',
-      lastName: 'Last Name',
+      name: 'Name',
       email: 'tuemail@mail.com',
       phone: '+56912345678',
     }
@@ -43,34 +43,25 @@ function InfoInput({ item, onChange }) {
   let generalInfoContent;
   if (shownInfo) {
     generalInfoContent = (
-      <>
-        <h1>{item.firstName + ' ' + item.lastName}</h1>
+      <div className="genInfoContent">
+        <h1>{item.name}</h1>
         <p>{item.email}</p>
         <p>{item.phone}</p>
         <button onClick={() => setShownInfo(false)}>Edit</button>
-      </>
+      </div>
     )
   } else {
     generalInfoContent = (
-      <>
+      <div className="genInfoContent">
         <input 
-          id="firstName"
-          placeholder="First Name"
+          id="name"
+          placeholder="Name"
           type="text"
-          value={item.firstName} 
+          value={item.name} 
           onChange={e => {
-            onChange({ ...item, firstName: e.target.value})
+            onChange({ ...item, name: e.target.value})
           }} 
-        />
-        <input
-          id="lastName" 
-          placeholder="Last Name"
-          type="text" 
-          value={item.lastName} 
-          onChange={e => {
-            onChange({ ...item, lastName: e.target.value})
-          }} 
-        />
+        />      
         <input 
           id="email"
           placeholder="Email"
@@ -94,7 +85,7 @@ function InfoInput({ item, onChange }) {
         >
           Save
         </button>
-      </>
+      </div>
     )
   }
 
