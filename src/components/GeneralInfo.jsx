@@ -20,9 +20,7 @@ export default function GeneralInfo() {
         return item;
       }
     }));
-  }
-
-  
+  }  
  
   return (
     <>

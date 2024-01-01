@@ -53,9 +53,8 @@ export default function AddEducation({ onAddEducation }) {
         </>
       ) : (
         <button onClick={handleAddButton}>Add</button>
-      )}   
+      )}
     </>
   )
-
 }
 

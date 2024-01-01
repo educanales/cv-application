@@ -23,8 +23,8 @@ export default function Education() {
         sinceDate: sinceDate,
         untilDate: untilDate
       }
-    ])
-  }
+    ]);
+  };
 
   const handleChangeEducation = (educationItem) => {
     setEducationData(educationData.map(item => {
@@ -34,11 +34,11 @@ export default function Education() {
         return item;
       }
     }));
-  }
+  };
 
   const handleDeleteEducation = (educationId) => {
     setEducationData(educationData.filter(item => item.id !== educationId));
-  }
+  };
 
   return (
     <>

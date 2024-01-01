@@ -14,7 +14,13 @@ export default function Experience() {
     }
   ]);
 
-  const handleAddExperience = (position, company, responsibilities, sinceDate, untilDate) => {
+  const handleAddExperience = (
+    position,
+    company,
+    responsibilities,
+    sinceDate,
+    untilDate
+  ) => {
     setExp([
       ...exp,
       {
@@ -23,10 +29,10 @@ export default function Experience() {
         company: company,
         responsibilities: responsibilities,
         sinceDate: sinceDate,
-        untilDate: untilDate
+        untilDate: untilDate,
       }
-    ])
-  }
+    ]);
+  };
 
   const handleChange = (experienceItem) => {    
     setExp(exp.map(item => {
@@ -51,7 +57,7 @@ export default function Experience() {
         onDeleteExp={handleDelete}
       />
       <br />
-      <AddExperience onAddExperience={handleAddExperience} />
+      <AddExperience handleAddExperience={handleAddExperience} />
     </>
   )
 }
