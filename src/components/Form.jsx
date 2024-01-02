@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/Form.css"
 
 export default function Form() {
-  const [genInfo, setGenInfo] = useState({ fName: "", lName: "", email: "", phone: "" });
+  const [genInfo, setGenInfo] = useState({ name: "", email: "", phone: "", address: "" });
   const [about, setAbout] = useState("")
 
   function handleChange(e) {
@@ -11,48 +11,58 @@ export default function Form() {
       helper [`${e.target.id}`] = e.target.value;
       return helper;
     })
-
   }
 
   return (
     <>
-      <form action="" className='generalInfo'>        
-        <input          
-          type="text" 
-          value={genInfo.fName}
+      <form className='generalInfo'>
+        <input
+          className="nameInput textAlign"
+          type="text"
+          value={genInfo.name}
           onChange={handleChange}
-          id='fName'
-          placeholder="First Name"
+          id='name'
+          placeholder="Name"
         />
-        <input 
-          type="text" 
-          value={genInfo.lName}
-          onChange={handleChange}
-          id='lName'
-        />
-        <input 
-          type="text" 
-          value={genInfo.email}
-          onChange={handleChange}
-          id='email'
-        />
-        <input 
-          type="phone" 
-          value={genInfo.phone}
-          onChange={handleChange}
-          id='phone'
-        />
+        <div className="inputContainer">
+          <input
+            className="secondaryInput textAlign"
+            type="text"
+            value={genInfo.email}
+            onChange={handleChange}
+            id='email'
+            placeholder="Email"
+          />
+          <input
+            className="secondaryInput textAlign"
+            type="phone" 
+            value={genInfo.phone}
+            onChange={handleChange}
+            id='phone'
+            placeholder="Phone"
+          />
+          <input
+            className="secondaryInput textAlign"
+            type="text"
+            value={genInfo.address}
+            onChange={handleChange}
+            id="address"
+            placeholder="Address"
+          />
+        </div>
       </form>
 
+      <hr />
+
       <form action="">
-        <h2>About</h2>
-          <input 
-            type="text" 
+        <h2 className="textAlign">About</h2>
+          <textarea
+            rows="6"
             value={about}
-            onChange={(e) => setAbout(e.target.value)}              
+            placeholder="Something about you"
+            onChange={(e) => setAbout(e.target.value)}
           />        
-      </form>     
-      
+      </form>      
     </>
   )
 }

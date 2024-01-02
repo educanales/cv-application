@@ -1,4 +1,37 @@
-#fname {
-  font-size: 20px;
+.generalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+}
+
+.nameInput {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.secondaryInput {
+  font-size: 1rem;
+  max-width: 12rem;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1rem;
   border: none;
 }

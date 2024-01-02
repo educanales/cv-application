@@ -55,7 +55,7 @@ function InfoInput({ item, onChange }) {
           id="name"
           placeholder="Name"
           type="text"
-          value={item.name} 
+          value={item.name}
           onChange={e => {
             onChange({ ...item, name: e.target.value})
           }} 

@@ -50,7 +50,7 @@ export default function Experience() {
   
   return (
     <>
-      <h2>Experience</h2>
+      <h2 className="textAlign">Experience</h2>
       <ExperienceList 
         exp={exp}
         onChangeExp={handleChange}

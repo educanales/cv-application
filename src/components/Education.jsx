@@ -42,8 +42,8 @@ export default function Education() {
 
   return (
     <>
-      <h2>Education</h2>
-      <EducationList 
+      <h2 className="textAlign">Education</h2>
+      <EducationList
         educationData={educationData}
         onChangeEducation={handleChangeEducation}
         onDeleteEducation={handleDeleteEducation}

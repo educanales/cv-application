@@ -21,13 +21,19 @@ function EducationInfo({ item, onChange, onDelete }) {
   let educationContent;
   if (shownList) {
     educationContent = (
-      <div>
-        <h3>{item.school}</h3>
-        <h4>{item.degree}</h4>
-        <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
-        <button onClick={() => setShownList(false)}>Edit</button>
-        <button onClick={() => onDelete(item.id)}>Delete</button>
-      </div>
+      <>
+        <div className="mainContainer">
+          <p className="dates">{item.sinceDate + ' - ' + item.untilDate}</p>
+          <div className="secondContainer">
+            <p className="mainP">{item.school}</p>
+            <p className="secondP">{item.degree}</p>
+          </div>
+        </div>
+        <div className="thirdContainer">
+          <button onClick={() => setShownList(false)}>Edit</button>
+          <button onClick={() => onDelete(item.id)}>Delete</button>
+        </div>        
+      </>
     )
   } else {
     educationContent = (
