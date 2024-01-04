@@ -18,14 +18,21 @@ h2 {
 }
 
 button {
-  width: 3rem;
+  max-width: 5rem;
   height: 2rem;
   border: none;
 }
 
+
+
+.dates {
+  min-width: 150px;
+}
+
 .mainContainer {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding: 0.75rem 0;
 }
 
 .secondContainer {
@@ -34,6 +41,7 @@ button {
   justify-content: center;
   gap: 0.1rem;
   margin: 0;
+  min-width: 150px;
 }
 
 .mainP {

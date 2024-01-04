@@ -10,7 +10,10 @@ export default function App() {
 
   return (
     <>
-      <Form />
+      <GeneralInfo />
+      <hr />
+      <About />
+      {/* <Form /> */}
       <hr />
       <Education />
       <hr /> 
