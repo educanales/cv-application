@@ -15,12 +15,12 @@ export default function AddEducation({ onAddEducation }) {
     <>
       {shownAdd ? (
         <>
-          <input 
+          <input
             name="school"
             placeholder="School"
             type="text" 
             value={school} 
-            onChange={(e) => setSchool(e.target.value)} 
+            onChange={(e) => setSchool(e.target.value)}
           />
           <input 
             name="degree"
