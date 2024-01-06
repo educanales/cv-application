@@ -48,7 +48,7 @@ function InfoInput({ item, onChange }) {
   if (shownInfo) {
     generalInfoContent = (
       <div
-        className="mb-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
+        className="mb-2 pb-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
         onClick={handleEditInfo}
       >
         <div className="grid grid-cols-8 gap-4 w-full">
@@ -66,7 +66,7 @@ function InfoInput({ item, onChange }) {
     );
   } else {
     generalInfoContent = (
-      <div className="flex flex-col gap-4 items-center mb-4">
+      <div className="flex flex-col gap-4 items-center mb-2 pb-4">
         <div className="grid grid-cols-8 gap-4 w-full">
           <input
             className="text-3xl text-center col-start-2 col-end-8 block mt-4 bg-transparent border-0 appearance-none focus:outline-none "

@@ -1,13 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function Modal() {
-  const [showModal, setShowModal] = useState(false);
-
   const dialogRef = useRef(null);
 
-  const handleModal = () => {
-    setShowModal(!showModal);
-  };
+ 
 
   function toggleDialog() {
     if(!dialogRef.current) {
