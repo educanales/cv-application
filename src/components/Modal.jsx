@@ -1,9 +1,7 @@
 import { useRef } from "react";
 
 export default function Modal() {
-  const dialogRef = useRef(null);
-
- 
+  const dialogRef = useRef(null); 
 
   function toggleDialog() {
     if(!dialogRef.current) {
