@@ -38,7 +38,16 @@ export default function GeneralInfo() {
 }
 
 function InfoInput({ item, onChange }) {
+  const [isHovering, setIsHovering] = useState(false);
   const dialogRef = useRef(null);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  }
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  }
 
   const handleEditInfo = () => {
     if (!dialogRef.current) {
@@ -54,11 +63,14 @@ function InfoInput({ item, onChange }) {
       <section
         className="mb-2 pb-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
         onClick={handleEditInfo}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         <div className="grid grid-cols-8 gap-4 w-full">
           <h1 className="text-3xl text-center mt-4 col-start-2 col-end-8">
             {item.name}
           </h1>
+          {isHovering && <EditButton />}
         </div>
         <div className="flex gap-4">
           <p>{item.email}</p>
