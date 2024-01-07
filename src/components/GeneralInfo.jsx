@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Fragment } from "react";
 import EditButton from "../icons/EditButton";
 import SaveButton from "../icons/SaveButton";
@@ -38,16 +38,20 @@ export default function GeneralInfo() {
 }
 
 function InfoInput({ item, onChange }) {
-  const [shownInfo, setShownInfo] = useState(true);
-  let generalInfoContent;
+  const dialogRef = useRef(null);
 
   const handleEditInfo = () => {
-    setShownInfo(!shownInfo);
+    if (!dialogRef.current) {
+      return;
+    }
+    dialogRef.current.hasAttribute("open")
+      ? dialogRef.current.close()
+      : dialogRef.current.showModal()
   };
 
-  if (shownInfo) {
-    generalInfoContent = (
-      <div
+  return (
+    <>
+      <section
         className="mb-2 pb-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
         onClick={handleEditInfo}
       >
@@ -55,68 +59,95 @@ function InfoInput({ item, onChange }) {
           <h1 className="text-3xl text-center mt-4 col-start-2 col-end-8">
             {item.name}
           </h1>
-          {/* <EditButton onClick={handleEditInfo} className="" /> */}
         </div>
         <div className="flex gap-4">
           <p>{item.email}</p>
           <p>{item.phone}</p>
           <p>{item.address}</p>
         </div>
-      </div>
-    );
-  } else {
-    generalInfoContent = (
-      <div className="flex flex-col gap-4 items-center mb-2 pb-4">
-        <div className="grid grid-cols-8 gap-4 w-full">
-          <input
-            className="text-3xl text-center col-start-2 col-end-8 block mt-4 bg-transparent border-0 appearance-none focus:outline-none "
-            id="name"
-            placeholder="Name"
-            type="text"
-            value={item.name}
-            onChange={(e) => {
-              onChange({ ...item, name: e.target.value });
-            }}
-          />
-          <SaveButton onClick={handleEditInfo} className="ml-auto" />
-        </div>
+      </section>
 
-        <div className="flex justify-center">
-          <input
-            className="block text-center px-0 w-full text-gray-900 bg-transparent border-1 border-solid appearance-none focus:outline-none focus:ring-0 focus:border-blue600 peer"
-            id="email"
-            placeholder="Email"
-            type="text"
-            value={item.email}
-            onChange={(e) => {
-              onChange({ ...item, email: e.target.value });
-            }}
-          />
-          <input
-            className="block text-center px-0 w-full text-gray-900 bg-transparent border-1 border-solid appearance-none focus:outline-none focus:ring-0 focus:border-blue600 peer"
-            id="phone"
-            placeholder="Phone"
-            type="text"
-            value={item.phone}
-            onChange={(e) => {
-              onChange({ ...item, phone: e.target.value });
-            }}
-          />
-          <input
-            className="block text-center px-0 w-full text-gray-900 bg-transparent border-1 border-solid appearance-none focus:outline-none focus:ring-0 focus:border-blue600 peer"
-            id="address"
-            placeholder="Address"
-            type="text"
-            value={item.address}
-            onChange={(e) => {
-              onChange({ ...item, address: e.target.value });
-            }}
-          />
-        </div>
-        {/* <button onClick={handleEditInfo}>Save</button> */}
-      </div>
-    );
-  }
+      <dialog ref={dialogRef} className="rounded-lg">
+        <div className="flex flex-col gap-4 items-center mb-2 p-4">
+          <div>
+            <label
+              htmlFor="name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Full Name:
+            </label>
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="name"
+              placeholder="John Doe"
+              type="text"
+              value={item.name}
+              onChange={(e) => {
+                onChange({ ...item, name: e.target.value });
+              }}
+            />
+            {/* <SaveButton onClick={handleEditInfo} /> */}
+          </div>
 
-  return <>{generalInfoContent}</>;
+          <div>
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Email
+            </label>
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="email"
+              placeholder="Email"
+              type="text"
+              value={item.email}
+              onChange={(e) => {
+                onChange({ ...item, email: e.target.value });
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="phone"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Phone
+            </label>
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="phone"
+              placeholder="Phone"
+              type="text"
+              value={item.phone}
+              onChange={(e) => {
+                onChange({ ...item, phone: e.target.value });
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="address"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Location
+            </label>
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="address"
+              placeholder="Los Angeles, California"
+              type="text"
+              value={item.address}
+              onChange={(e) => {
+                onChange({ ...item, address: e.target.value });
+              }}
+            />
+          </div>
+          <SaveButton onClick={handleEditInfo} />
+        </div>
+      </dialog>
+    </>
+  );
 }

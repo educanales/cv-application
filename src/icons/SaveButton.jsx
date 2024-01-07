@@ -1,6 +1,9 @@
-export default function SaveButton ({ onClick }) {
+export default function SaveButton({ onClick }) {
   return (
-    <button onClick={onClick} aria-label="save">
+    <button
+      onClick={onClick}
+      className="flex gap-2 rounded bg-gray-200 px-3 py-1.5 text-sm font-medium hover:text-gray-600"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="icon icon-tabler icon-tabler-device-floppy"
@@ -18,6 +21,7 @@ export default function SaveButton ({ onClick }) {
         <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
         <path d="M14 4l0 4l-6 0l0 -4" />
       </svg>
+      Save
     </button>
   );
 }
