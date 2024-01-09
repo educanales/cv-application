@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 export default function AddEducation({ onAddEducation }) {
   const [school, setSchool] = useState('');
@@ -52,7 +53,7 @@ export default function AddEducation({ onAddEducation }) {
           </button> 
         </>
       ) : (
-        <button onClick={handleAddButton}>Add</button>
+        <Button onClick={handleAddButton} text="Add" />
       )}
     </>
   )

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import SaveButton from "../icons/SaveButton";
 
 export default function About() {
   const [about, setAbout] = useState(
@@ -45,12 +46,7 @@ export default function About() {
             placeholder="Tell us about you"
             onChange={(e) => setAbout(e.target.value)}
           />
-          <button
-            onClick={handleClick}
-            className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium hover:text-gray-600"
-          >
-            Save
-          </button>
+          <SaveButton onClick={handleClick} />      
         </div>
       </dialog>
     </>

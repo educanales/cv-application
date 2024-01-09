@@ -49,15 +49,14 @@ export default function Experience() {
   }
   
   return (
-    <>
-      <h2 className="textAlign">Experience</h2>
-      <ExperienceList 
+    <section className="flex flex-col gap-4 my-4 items-center">
+      <h2 className="text-xl font-medium text-center">Experience</h2>
+      <ExperienceList
         exp={exp}
         onChangeExp={handleChange}
         onDeleteExp={handleDelete}
-      />
-      <br />
+      />      
       <AddExperience handleAddExperience={handleAddExperience} />
-    </>
-  )
+    </section>
+  );
 }

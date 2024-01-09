@@ -1,4 +1,6 @@
 import { Fragment, useState } from "react";
+import SaveButton from "../icons/SaveButton";
+import Button from "./Button";
 
 export default function EducationList({ educationData, onChangeEducation, onDeleteEducation }) {
   return (
@@ -17,24 +19,35 @@ export default function EducationList({ educationData, onChangeEducation, onDele
 }
 
 function EducationInfo({ item, onChange, onDelete }) {
-  const [shownList, setShownList] = useState(true);
+  const [showList, setShowList] = useState(true);
   let educationContent;
-  if (shownList) {
+
+  const handleShowList = () => {
+    setShowList(!showList);
+  }
+
+  const handleDelete = () => {
+    onDelete(item.id);
+  }
+
+  if (showList) {
     educationContent = (
       <>
-        <div className="mainContainer">
-          <p className="dates">{item.sinceDate + ' - ' + item.untilDate}</p>
-          <div className="secondContainer">
-            <p className="mainP">{item.school}</p>
-            <p className="secondP">{item.degree}</p>
+        <div className="flex gap-4 items-baseline justify-between w-4/5 p-2 my-2">
+          <div className="flex flex-col gap-2">
+            <p className="text-lg ">{item.school}</p>
+            <p className="">{item.degree}</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="">{item.sinceDate + " - " + item.untilDate}</p>
+            <div className="flex gap-2 place-content-center">
+              <Button onClick={handleShowList} text="Edit" />
+              <Button onClick={handleDelete} text="Delete" />
+            </div>
           </div>
         </div>
-        <div className="thirdContainer">
-          <button onClick={() => setShownList(false)}>Edit</button>
-          <button onClick={() => onDelete(item.id)}>Delete</button>
-        </div>        
       </>
-    )
+    );
   } else {
     educationContent = (
       <form>
@@ -74,7 +87,7 @@ function EducationInfo({ item, onChange, onDelete }) {
             onChange({ ...item, untilDate: e.target.value })
           }}
         />
-        <button onClick={() => setShownList(true)}>Save</button>
+        <SaveButton onClick={handleShowList} />
       </form>
     )
   }

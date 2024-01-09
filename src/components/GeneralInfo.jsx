@@ -66,11 +66,11 @@ function InfoInput({ item, onChange }) {
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
-        <div className="grid grid-cols-8 gap-4 w-full">
+        <div className="grid grid-cols-8 gap-4 place-items-center w-full">
           <h1 className="text-3xl text-center mt-4 col-start-2 col-end-8">
             {item.name}
           </h1>
-          {isHovering && <EditButton />}
+          {isHovering && <EditButton className="col-start-8"/>}
         </div>
         <div className="flex gap-4">
           <p>{item.email}</p>
@@ -80,7 +80,7 @@ function InfoInput({ item, onChange }) {
       </section>
 
       <dialog ref={dialogRef} className="rounded-lg">
-        <div className="flex flex-col gap-4 items-center mb-2 p-4">
+        <div className="flex flex-col gap-4 items-center mb-2 p-6">
           <div>
             <label
               htmlFor="name"
