@@ -81,6 +81,7 @@ function InfoInput({ item, onChange }) {
 
       <dialog ref={dialogRef} className="rounded-lg">
         <div className="flex flex-col gap-4 items-center mb-2 p-6">
+          <h2 className="text-xl">General Info</h2>
           <div>
             <label
               htmlFor="name"
