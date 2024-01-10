@@ -48,7 +48,7 @@ export default function Education() {
         onChangeEducation={handleChangeEducation}
         onDeleteEducation={handleDeleteEducation}
       />
-      <AddEducation onAddEducation={handleAddEducation} />
+      <AddEducation handleAddEducation={handleAddEducation} />
     </section>
   );
 
