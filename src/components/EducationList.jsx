@@ -34,7 +34,7 @@ function EducationInfo({ item, onChange, onDelete }) {
     educationContent = (
       <>
         <div className="flex gap-4 items-baseline justify-between w-4/5 p-2 my-2">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             <p className="text-lg ">{item.school}</p>
             <p className="">{item.degree}</p>
           </div>

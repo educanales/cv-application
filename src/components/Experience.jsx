@@ -6,11 +6,11 @@ export default function Experience() {
   const [exp, setExp] = useState([
     {
       id: 1,
-      position: 'Position',
-      company: 'Company',
-      responsibilities: 'What do you do',
-      sinceDate: '01-01-2023',
-      untilDate: '01-09-2023',
+      position: 'Front-end Developer',
+      company: 'Fancy Co',
+      responsibilities: 'Building web applications from scratch, as well as continuous maintenance and updates as needed. Close collaboration with designers, frontend developers, and other team members to achieve common goals. Efficient identification and resolution of issues to ensure smooth operation of web applications.',
+      sinceDate: 'January 2020',
+      untilDate: 'Present',
     }
   ]);
 

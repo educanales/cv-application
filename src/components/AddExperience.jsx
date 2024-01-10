@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 export default function AddExperience({ handleAddExperience }) {
   const [position, setPosition] = useState("");
@@ -60,7 +61,7 @@ export default function AddExperience({ handleAddExperience }) {
           </button>
         </>
       ) : (
-        <button onClick={handleAddButton}>Add</button>
+        <Button onClick={handleAddButton} text="Add" />
       )}
     </>
   );
