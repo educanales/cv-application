@@ -1,11 +1,21 @@
 import { useRef, useState } from "react";
 import SaveButton from "../icons/SaveButton";
+import EditButton from "../icons/EditButton";
 
 export default function About() {
   const [about, setAbout] = useState(
     "Experienced web developer with a passion for creating user-friendly and visually appealing websites. Skilled in HTML, CSS, and JavaScript, with a focus on front-end development. Proven track record of delivering high-quality projects on time and within budget."
   );
+  const [isHovering, setIsHovering] = useState(false);
   const dialogRef = useRef(null);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
 
   function handleClick() {
     if (!dialogRef.current) {
@@ -18,16 +28,20 @@ export default function About() {
 
   return (
     <>
-      <section className="flex flex-col gap-4 my-4 items-center ">
-        <h2 className="text-xl font-medium text-center">About you</h2>
+      <section
+        className="flex flex-col gap-4 py-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        <div className="grid grid-cols-8 gap-4 place-items-center w-full">
+          <h2 className="text-xl font-medium text-center col-start-2 col-end-8">
+            About you
+          </h2>
+          {isHovering && <EditButton className="col-start-8" />}
+        </div>
         <div className="flex flex-col place-items-center max-w-xl">
-          <p className="mb-4">{about}</p>
-          <button
-            onClick={handleClick}
-            className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium hover:text-gray-600"
-          >
-            Edit
-          </button>
+          <p className="">{about}</p>
         </div>
       </section>
 
@@ -46,7 +60,7 @@ export default function About() {
             placeholder="Tell us about you"
             onChange={(e) => setAbout(e.target.value)}
           />
-          <SaveButton onClick={handleClick} />      
+          <SaveButton onClick={handleClick} />
         </div>
       </dialog>
     </>

@@ -61,13 +61,13 @@ function InfoInput({ item, onChange }) {
   return (
     <>
       <section
-        className="mb-2 pb-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
+        className="py-4 flex flex-col gap-4 items-center cursor-pointer border-2 border-white hover:rounded-md hover:border-gray-400"
         onClick={handleEditInfo}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
         <div className="grid grid-cols-8 gap-4 place-items-center w-full">
-          <h1 className="text-3xl text-center mt-4 col-start-2 col-end-8">
+          <h1 className="text-3xl text-center col-start-2 col-end-8">
             {item.name}
           </h1>
           {isHovering && <EditButton className="col-start-8"/>}
