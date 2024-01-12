@@ -6,10 +6,10 @@ export default function Education() {
   const [educationData, setEducationData] = useState([
     { 
       id: 1,
-      school: 'School', 
-      degree: 'Degree', 
-      sinceDate: 'Since', 
-      untilDate: 'Until',
+      school: 'Instituto Aplaplac', 
+      degree: 'Software Engineer', 
+      sinceDate: 'Marzo 2008', 
+      untilDate: 'Mayo 2012',
     }
   ]);
 
@@ -21,8 +21,8 @@ export default function Education() {
         school: school,
         degree: degree,
         sinceDate: sinceDate,
-        untilDate: untilDate
-      }
+        untilDate: untilDate,
+      },
     ]);
   };
 
@@ -41,15 +41,15 @@ export default function Education() {
   };
 
   return (
-    <>
-      <h2 className="textAlign">Education</h2>
+    <section className="flex flex-col gap-4 my-4 items-center">
+      <h2 className="text-xl font-medium text-center">Education</h2>
       <EducationList
         educationData={educationData}
         onChangeEducation={handleChangeEducation}
         onDeleteEducation={handleDeleteEducation}
       />
-      <AddEducation onAddEducation={handleAddEducation} />
-    </>
-  )
+      <AddEducation handleAddEducation={handleAddEducation} />
+    </section>
+  );
 
 }

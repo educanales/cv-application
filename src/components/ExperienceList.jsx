@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Fragment } from "react";
+import Button from "./Button";
+import SaveButton from "../icons/SaveButton";
 
 export default function ExperienceList({ exp, onChangeExp, onDeleteExp }) {
   return (
@@ -67,20 +69,32 @@ function ExperienceData({ item, onChange, onDelete }) {
             onChange({ ...item, untilDate: e.target.value })
           }}
         />
-        <button onClick={() => setShownList(true)}>Save</button>
+        <SaveButton onClick={() => setShownList(true)} />
       </form>
     )
   } else {
     experienceContent = (
       <>
-        <h3>{item.position}</h3>
-        <h4>{item.company}</h4>
-        <p>{item.responsibilities}</p>
-        <h5>{item.sinceDate + ' - ' + item.untilDate}</h5>
-        <button onClick={() => setShownList(false)}>Edit</button>
-        <button onClick={() => onDelete(item.id)}>Delete</button>
+        <div className="flex flex-col w-4/5 p-2 my-2">
+          <div className="flex gap-4 items-baseline justify-between ">
+            <div className="flex flex-col gap-1">
+              <p className="text-lg font-medium">{item.position}</p>
+              <p className="text-lg">{item.company}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="w-full">
+                {item.sinceDate + " - " + item.untilDate}
+              </p>
+              <div className="flex gap-2 place-content-center">
+                <Button onClick={() => setShownList(false)} text="Edit" />
+                <Button onClick={() => onDelete(item.id)} text="Delete" />
+              </div>
+            </div>
+          </div>
+          <p className="mt-2 text-justify">{item.responsibilities}</p>
+        </div>
       </>
-    )
+    );
   }
 
   return (

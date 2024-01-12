@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 export default function AddExperience({ handleAddExperience }) {
   const [position, setPosition] = useState("");
@@ -12,6 +13,22 @@ export default function AddExperience({ handleAddExperience }) {
     setShownAdd(!shownAdd);
   }
 
+  const handleSave = (
+    position,
+    company,
+    responsibilities,
+    sinceDate,
+    untilDate
+  ) => {
+    handleAddExperience(
+      position,
+      company,
+      responsibilities,
+      sinceDate,
+      untilDate
+    );
+    setShownAdd(false);
+  };
   return (
     <>
       {shownAdd ? (
@@ -51,16 +68,19 @@ export default function AddExperience({ handleAddExperience }) {
             onChange={(e) => setUntilDate(e.target.value)}
           />
           <button
-            onClick={() => {
-              handleAddExperience(position, company, responsibilities, sinceDate, untilDate);
-              setShownAdd(false);
-            }}
+            onClick={() => handleSave(
+              position,
+              company,
+              responsibilities,
+              sinceDate,
+              untilDate
+            )}
           >
             Save
           </button>
         </>
       ) : (
-        <button onClick={handleAddButton}>Add</button>
+        <Button onClick={handleAddButton} text="Add" />
       )}
     </>
   );
