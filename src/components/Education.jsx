@@ -21,8 +21,8 @@ export default function Education() {
         school: school,
         degree: degree,
         sinceDate: sinceDate,
-        untilDate: untilDate
-      }
+        untilDate: untilDate,
+      },
     ]);
   };
 
